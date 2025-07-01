@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DemoSite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="saira">
+
+    <div>
+        <h1 class="heading">IMAGE COLLECTION</h1>
+    </div>
+
+    <div class="imgcontainer">
+        <div>
+            <img src="tiger.png" width="200px" height="200px">
+            <h2>Tiger</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
+            </p>
+        </div>
+        <div>
+            <img src="rabbit.png" width="200px" height="200px">
+            <h2>Rabbit</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
+            </p>
+        </div>
+        <div>
+            <img src="lion.png" width="200px" height="200px">
+            <h2>Lion</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
+            </p>
+        </div>
+        <div>
+            <img src="pig.png" width="200px" height="200px">
+            <h2>Pig</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
+            </p>
+        </div>
+        <div>
+            <img src="goat.png" width="200px" height="200px">
+            <h2>Goat</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
+            </p>
+        </div>
+        <div>
+            <img src="elephant.png" width="200px" height="200px">
+            <h2>Elephant</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
+            </p>
+        </div>
+        <div>
+            <img src="dog.png" width="200px" height="200px">
+            <h2>Dog</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
+            </p>
+        </div>
+        <div>
+            <img src="cow.png" width="200px" height="200px">
+            <h2>Cow</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
+            </p>
+        </div>
+
+
+    </div><br>
+
+    <div class="willingForm">
+        <h2><span>You Willing To Buy Animals Fill The Form</span></h2>
+    </div><br>
+
+    <form>
+        <label for="name">NAME</label>
+        <input type="text" placeholder="Enter Name" id="name" required pattern="[A-Za-z]+">
+        <br><br>
+
+        <label for="dob">BIRTH DATE</label>
+        <input type="date" id="dob" required min="18">
+        <br><br>
+
+        <label for="gmail">GMAIL</label>
+        <input type="email" placeholder="Enter Valid Gmail" id="gmail" required>
+        <br><br>
+
+        <label for="animal">ANIMAL NEED</label>
+        <input type="text" placeholder="Enter Choice of animal" id="animal" required>
+        <br><br>
+
+        <label for="address">ADDRESS</label>
+        <input type="text" placeholder="Enter Address" id="address" required>
+        <br><br>
+
+        <input type="submit" value="ORDER NOW">
+        <br><br>
+
+    </form>
+
+    <br>
+
+    <table id="orderTable" border="3">
+        <thead>
+            <tr>
+
+                <th>NAME</th>
+                <th>DOB</th>
+                <th>GMAIL</th>
+                <th>ANIMAL</th>
+                <th>ADDRESS</th>
+            
+                </tr>
+
+        </thead>
+        <tbody>
+
+
+        </tbody>
+
+        
+    </table>
+    <br><br><br>
+
+
+    <script>
+        alert("Wlcome to Site")
+        const form = document.querySelector("form");
+        const tableBody = document.querySelector("#orderTable tbody");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const date = document.getElementById("dob").value;
+            const gmail = document.getElementById("gmail").value;
+            const animal = document.getElementById("animal").value;
+            const address = document.getElementById("address").value;
+
+            const shortAddress = address.length > 10 ? address.substring(0, 10) + "....":address;
+
+
+            const row = tableBody.insertRow();
+
+            row.innerHTML = `
+            <td>${name}</td>
+            <td>${date}</td>
+            <td>${gmail}</td>
+            <td>${animal}</td>
+            <td class="address-cell" title="${address}">${shortAddress}</td>`
+                ;
+            form.reset();
+        });
+    </script>
+
+
+</body>
+
+<style>
+    
+    * {
+        margin: 0px;
+        padding: 0px;
+        background-color: darkmagenta;
+        /* background-color: #b0b8ba; */
+        
+    }
+    /* .poppins-regular {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+} */
+ .saira {
+  font-family: "Saira", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings:"wdth" 100;
+}
+
+    .heading {
+        text-align: center;
+        color: white;
+        padding: 10px;
+        padding-bottom: 20px;
+    }
+
+    .imgcontainer {
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+
+    }
+
+    .imgcontainer div {
+
+        flex-basis: 22%;
+
+        color: white;
+        width: 200px;
+        flex-grow: 1;
+        margin: 10px;
+
+
+    }
+
+    .imgcontainer img {
+        border-radius: 30px;
+        justify-content: space-around;
+
+    }
+
+    .imgcontainer div p {
+        width: 200px;
+    }
+
+    .willingForm {
+        text-align: center;
+
+    }
+
+    .willingForm h2 {
+        border-bottom: 1px solid #CCC;
+        text-align: center;
+
+    }
+
+    span {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        color: white;
+
+    }
+
+    form {
+
+        margin-left: 30%;
+
+    }
+
+    form label {
+        display: block;
+        font-weight: bold;
+        margin-top: 10px;
+
+    }
+
+    form input[type="text"],
+    form input[type="date"],
+    form input[type="email"] {
+        width: 50%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    form input[type="submit"] {
+        width: 20%;
+        margin-top: 10px;
+        border: 2px solid rgb(102, 171, 102);
+        color: black;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: rgb(102, 171, 102);
+        margin-left: 14%;
+    }
+    table{
+        text-align: center;
+        width: 97%;
+        margin: 20px;
+    }
+    .imgcontainer div img:hover{
+        margin-bottom: 5px;
+        margin-top: 15px;
+        margin-left: 5px;
+        border-radius: 100%;
+        box-shadow:3px 3px red, -7px 0 7px olive;
+    }
+</style>
+
+</html>
