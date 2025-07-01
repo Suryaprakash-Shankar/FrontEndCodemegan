@@ -19,50 +19,50 @@
         <h1 class="heading">IMAGE COLLECTION</h1>
     </div>
 
-    <div class="imgcontainer">
-        <div>
+    <div class="imgcontainer par">
+        <div class="child one">
             <img src="tiger.png" width="200px" height="200px">
             <h2>Tiger</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
             </p>
         </div>
-        <div>
+        <div class="child two">
             <img src="rabbit.png" width="200px" height="200px">
             <h2>Rabbit</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
             </p>
         </div>
-        <div>
+        <div class="child three">
             <img src="lion.png" width="200px" height="200px">
             <h2>Lion</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
             </p>
         </div>
-        <div>
+        <div class="child four">
             <img src="pig.png" width="200px" height="200px">
             <h2>Pig</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
             </p>
         </div>
-        <div>
+        <div class="child five">
             <img src="goat.png" width="200px" height="200px">
             <h2>Goat</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
             </p>
         </div>
-        <div>
+        <div class="child six">
             <img src="elephant.png" width="200px" height="200px">
             <h2>Elephant</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
             </p>
         </div>
-        <div>
+        <div class="child seven">
             <img src="dog.png" width="200px" height="200px">
             <h2>Dog</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
             </p>
         </div>
-        <div>
+        <div class="child eight">
             <img src="cow.png" width="200px" height="200px">
             <h2>Cow</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ratione?
@@ -189,21 +189,20 @@
         padding-bottom: 20px;
     }
 
-    .imgcontainer {
-        display: flex;
-        flex-wrap:wrap;
-        justify-content: space-around;
-        flex-direction: row-reverse;
 
+
+    .imgcontainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+ 
     }
 
     .imgcontainer div {
 
-        flex-basis: 22%;
 
         color: white;
-        width: 200px;
-        flex-grow: 1;
+       
+        /* flex-grow: 1; */
         margin: 10px;
 
 
@@ -211,7 +210,7 @@
 
     .imgcontainer img {
         border-radius: 30px;
-        justify-content: space-around;
+        
 
     }
 
