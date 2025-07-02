@@ -6,17 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DemoSite</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="saira">
 
     <div>
-        <h1 class="heading">IMAGE COLLECTION</h1>
+        <h1 class="heading">PRODUCT IMAGE COLLECTION</h1>
     </div>
 
     <div class="imgcontainer">
@@ -113,8 +117,9 @@
                 <th>GMAIL</th>
                 <th>ANIMAL</th>
                 <th>ADDRESS</th>
-            
-                </tr>
+                <th>ACTION</th>
+
+            </tr>
 
         </thead>
         <tbody>
@@ -122,13 +127,14 @@
 
         </tbody>
 
-        
+
     </table>
     <br><br><br>
 
 
     <script>
         alert("Wlcome to Site")
+        let editIndex = -1; 
         const form = document.querySelector("form");
         const tableBody = document.querySelector("#orderTable tbody");
 
@@ -141,46 +147,79 @@
             const animal = document.getElementById("animal").value;
             const address = document.getElementById("address").value;
 
-            const shortAddress = address.length > 10 ? address.substring(0, 10) + "....":address;
+            const shortAddress = address.length > 10 ? address.substring(0, 10) + "...." : address;
 
+            if (editIndex === -1) {
 
-            const row = tableBody.insertRow();
+                const row = tableBody.insertRow();
 
             row.innerHTML = `
+
             <td>${name}</td>
             <td>${date}</td>
             <td>${gmail}</td>
             <td>${animal}</td>
-            <td class="address-cell" title="${address}">${shortAddress}</td>`
-                ;
+            <td class="address-cell" title="${address}">${shortAddress}</td>
+            <td><button onclick="updateRow(this)"> Update </button>
+                <button onclick="deleteRow(this)"> Delete </button></td>`;
+            }
+
+            else {
+                const row = tableBody.rows[editIndex];
+
+                row.cells[0].innerText = name;
+                row.cells[1].innerText = date;
+                row.cells[2].innerText = gmail;
+                row.cells[3].innerText = animal;
+                row.cells[4].innerText = address;
+                row.cells[4].setAttribute("title", address);
+
+                editIndex = -1;
+            }
+
             form.reset();
         });
+
+        function deleteRow(btn) {
+            const Row = btn.parentNode.parentNode;
+            Row.remove();
+        }
+
+        function updateRow(btn) {
+            const row = btn.parentNode.parentNode;
+            editIndex = row.rowIndex - 1;
+            document.getElementById("name").value = row.cells[0].innerText;
+            document.getElementById("dob").value = row.cells[1].innerText;
+            document.getElementById("gmail").value = row.cells[2].innerText;
+            document.getElementById("animal").value = row.cells[3].innerText;
+            document.getElementById("address").value = row.cells[4].getAttribute("title");
+        }
     </script>
 
 
 </body>
 
 <style>
-    
     * {
         margin: 0px;
         padding: 0px;
         background-color: darkmagenta;
         /* background-color: #b0b8ba; */
-        
+
     }
+
     /* .poppins-regular {
   font-family: Poppins, sans-serif;
   font-weight: 400;
   font-style: normal;
 } */
- .saira {
-  font-family: "Saira", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
-  font-variation-settings:"wdth" 100;
-}
+    .saira {
+        font-family: "Saira", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+    }
 
     .heading {
         text-align: center;
@@ -191,8 +230,8 @@
 
     .imgcontainer {
         display: flex;
-        flex-wrap:wrap;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        justify-content: space-between;
         flex-direction: row-reverse;
 
     }
@@ -204,7 +243,7 @@
         color: white;
         width: 200px;
         flex-grow: 1;
-        margin: 10px;
+        margin: 20px;
 
 
     }
@@ -272,17 +311,20 @@
         background-color: rgb(102, 171, 102);
         margin-left: 14%;
     }
-    table{
+
+    table {
         text-align: center;
         width: 97%;
         margin: 20px;
+        color: white;
     }
-    .imgcontainer div img:hover{
+
+    .imgcontainer div img:hover {
         margin-bottom: 5px;
         margin-top: 15px;
         margin-left: 5px;
         border-radius: 100%;
-        box-shadow:3px 3px red, -7px 0 7px olive;
+        box-shadow: 3px 3px red, -7px 0 7px olive;
     }
 </style>
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div class="willingForm">
+        <h2><span>You Willing To Buy Animals Fill The Form</span></h2>
+    </div><br>
+
+    <form>
+        <label for="name">NAME</label>
+        <input type="text" placeholder="Enter Name" id="name" required pattern="[A-Za-z]+">
+        <br><br>
+
+        <label for="dob">BIRTH DATE</label>
+        <input type="date" id="dob" required min="18">
+        <br><br>
+
+        <label for="gmail">GMAIL</label>
+        <input type="email" placeholder="Enter Valid Gmail" id="gmail" required>
+        <br><br>
+
+        <label for="animal">ANIMAL NEED</label>
+        <input type="text" placeholder="Enter Choice of animal" id="animal" required>
+        <br><br>
+
+        <label for="address">ADDRESS</label>
+        <input type="text" placeholder="Enter Address" id="address" required>
+        <br><br>
+
+        <input type="submit" value="ORDER NOW">
+        <br><br>
+
+    </form>
+
+    <br>
+
+    <table id="orderTable" border="3" style="background-color: yellow;">
+        <thead>
+            <tr>
+
+                <th>NAME</th>
+                <th>DOB</th>
+                <th>GMAIL</th>
+                <th>ANIMAL</th>
+                <th>ADDRESS</th>
+                <th>ACTION</th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+
+
+        </tbody>
+
+
+    </table>
+    <br><br><br>
+
+    <script>
+
+        const form = document.querySelector("form");
+        const tableBody = document.querySelector("#orderTable tbody");
+
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const dob = document.getElementById("dob").value;
+            const gmail = document.getElementById("gmail").value;
+            const animal = document.getElementById("animal").value;
+            const address = document.getElementById("address").value;
+            const dotAdd = address.length > 5 ? address.substring(0,5)+"..." : address;
+
+            const row = tableBody.insertRow();
+
+            row.innerHTML = `
+            <td>${name}</td>
+            <td>${dob}</td>
+            <td>${gmail}</td>
+            <td>${animal}</td>
+            <td class="address-cell" title="${address}">${dotAdd}</td>
+            `;
+            form.reset();
+
+
+        })
+
+    </script>
+</body>
+</html>
